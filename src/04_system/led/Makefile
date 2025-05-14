@@ -1,4 +1,4 @@
-EXEC=silly
+EXEC=led
 DTB = mydt.dtb
 SRCS=$(wildcard *.c)
 
