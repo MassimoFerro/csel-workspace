@@ -1,26 +1,13 @@
 #include "HostCounter.h"
 
-#include <algorithm> // for std::find
+HostCounter::HostCounter() = default;
 
-HostCounter::HostCounter()
+void HostCounter::notifyHost(const std::string& hostname)
 {
+    myHosts.insert(hostname); // insert is safe, does nothing if already present
 }
 
-bool HostCounter::isNewHost(std::string hostname)
-{
-    return std::find(myHosts.begin(), myHosts.end(), hostname) == myHosts.end();
-}
-
-void HostCounter::notifyHost(std::string hostname)
-{
-    // add the host in the list if not already in
-    if(isNewHost(hostname))
-    {
-        myHosts.push_back(hostname);
-    }
-}
-
-int HostCounter::getNbOfHosts()
+int HostCounter::getNbOfHosts() const
 {
     return myHosts.size();
 }
